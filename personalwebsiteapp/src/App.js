@@ -4,6 +4,7 @@ import Profile from './components/Profile';
 import LinkButton from './components/LinkButton';
 import Footer from './components/Footer';
 import StockOptionsCalculator from './components/StockOptionsCalculator';
+import ContactButton from './components/ContactButton';
 import './App.css';
 
 // Instagram SVG Icon Component
@@ -52,7 +53,8 @@ function Home() {
       {/* Content container */}
       <div className="relative min-h-screen py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <div className="backdrop-blur-xl bg-white/10 rounded-3xl shadow-2xl p-8 border border-white/20">
+          <div className="backdrop-blur-xl bg-white/10 rounded-3xl shadow-2xl p-8 border border-white/20 relative">
+            <ContactButton email="rsassanimarketing@gmail.com" />
             <Profile
               name="Rocco Sassani"
               profilePicture="/assets/images/pfp.JPEG"
