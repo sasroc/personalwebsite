@@ -1,7 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Profile from './components/Profile';
 import LinkButton from './components/LinkButton';
 import Footer from './components/Footer';
+import StockOptionsCalculator from './components/StockOptionsCalculator';
 import './App.css';
 
 // Instagram SVG Icon Component
@@ -15,7 +17,7 @@ const InstagramIcon = () => (
   </svg>
 );
 
-function App() {
+function Home() {
   const links = [
     {
       label: 'X',
@@ -66,6 +68,12 @@ function App() {
                   iconPosition={link.iconPosition}
                 />
               ))}
+              <LinkButton
+                label="Stock Options Calculator"
+                url="/stockoptionscalculator"
+                icon="/assets/images/StockOptionsLogo.jpg"
+                iconPosition="right"
+              />
             </div>
 
             <Footer />
@@ -73,6 +81,17 @@ function App() {
         </div>
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/stockoptionscalculator" element={<StockOptionsCalculator />} />
+      </Routes>
+    </Router>
   );
 }
 
