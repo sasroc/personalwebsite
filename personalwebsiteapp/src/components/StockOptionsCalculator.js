@@ -1,19 +1,83 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { database } from '../firebase';
+import { ref, onValue, set, get } from 'firebase/database';
 
 function StockOptionsCalculator() {
-  const handleDownload = () => {
-    // Create a link element
-    const link = document.createElement('a');
-    // Set the href to the path of your .exe file with encoded spaces
-    link.href = '/downloads/Stock%20Options%20Calculator.exe';
-    // Set the download attribute to force download with the original filename
-    link.download = 'Stock Options Calculator.exe';
-    // Append to the document
-    document.body.appendChild(link);
-    // Trigger the click
-    link.click();
-    // Clean up
-    document.body.removeChild(link);
+  const [downloadCount, setDownloadCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    let unsubscribe;
+
+    const initializeCounter = async () => {
+      try {
+        console.log('Initializing counter...');
+        const downloadCountRef = ref(database, 'downloadCount');
+        
+        // Set up real-time listener
+        unsubscribe = onValue(downloadCountRef, (snapshot) => {
+          console.log('Counter updated:', snapshot.val());
+          const count = snapshot.val() || 0;
+          setDownloadCount(count);
+          setIsLoading(false);
+        }, (error) => {
+          console.error('Error setting up listener:', error);
+          setIsLoading(false);
+        });
+
+        // Initialize counter if it doesn't exist
+        const snapshot = await get(downloadCountRef);
+        if (!snapshot.exists()) {
+          console.log('Counter does not exist, setting to 0');
+          await set(downloadCountRef, 0);
+        } else {
+          console.log('Current count:', snapshot.val());
+        }
+      } catch (error) {
+        console.error('Error initializing counter:', error);
+        setIsLoading(false);
+      }
+    };
+
+    initializeCounter();
+
+    // Cleanup subscription on unmount
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
+  }, []);
+
+  const handleDownload = async () => {
+    try {
+      console.log('Starting download process...');
+      
+      // Create a link element
+      const link = document.createElement('a');
+      link.href = '/downloads/Stock%20Options%20Calculator.exe';
+      link.download = 'Stock Options Calculator.exe';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      console.log('File download initiated, updating counter...');
+      
+      // Increment the download count in Firebase
+      const downloadCountRef = ref(database, 'downloadCount');
+      const snapshot = await get(downloadCountRef);
+      const currentCount = snapshot.val() || 0;
+      console.log('Current count before increment:', currentCount);
+      
+      const newCount = currentCount + 1;
+      await set(downloadCountRef, newCount);
+      console.log('Counter updated to:', newCount);
+      
+      // Update local state immediately for better UX
+      setDownloadCount(newCount);
+    } catch (error) {
+      console.error('Error in handleDownload:', error);
+    }
   };
 
   return (
@@ -26,7 +90,6 @@ function StockOptionsCalculator() {
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
 
-      {/* Content container */}
       <div className="relative min-h-screen py-12 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="backdrop-blur-xl bg-white/10 rounded-3xl shadow-2xl p-8 border border-white/20">
@@ -54,6 +117,9 @@ function StockOptionsCalculator() {
                   </svg>
                   <span>Download for Windows</span>
                 </button>
+                <p className="text-gray-400 mt-2">
+                  {isLoading ? 'Loading...' : `Total Downloads: ${downloadCount.toLocaleString()}`}
+                </p>
               </div>
             </div>
 
