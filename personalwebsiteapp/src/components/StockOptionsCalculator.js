@@ -103,7 +103,7 @@ function StockOptionsCalculator() {
               <div>
                 <h1 className="text-3xl font-bold text-white">Stock Options Calculator</h1>
                 <p className="text-gray-300 mt-2">
-                  This app helps you to quickly calculate a -10% stop and a +10% profit target, based on options contract price. Input your fill price, and your stop loss / profit target contract price display immediately.
+                  This app helps you to quickly calculate a -10% stop and a +10% profit target, based on options contract price. Input your fill price, and your stop loss / profit target contract price display immediately. You can adjust & add percentages that display.
                 </p>
                 <p className="text-gray-400 mt-2 italic">
                   Available for Windows only, for now.
@@ -124,7 +124,7 @@ function StockOptionsCalculator() {
             </div>
 
             {/* Screenshots */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <div className="rounded-xl overflow-hidden shadow-2xl">
                 <img
                   src="/assets/images/stockoptions1.png"
@@ -136,6 +136,13 @@ function StockOptionsCalculator() {
                 <img
                   src="/assets/images/stockoptions2.png"
                   alt="Stock Options Calculator Screenshot 2"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <div className="rounded-xl overflow-hidden shadow-2xl">
+                <img
+                  src="/assets/images/stockoptions3.png"
+                  alt="Stock Options Calculator Screenshot 3"
                   className="w-full h-auto object-cover"
                 />
               </div>

@@ -2,16 +2,17 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
-  // Your Firebase configuration object will go here
-  // You'll need to create a Firebase project and add the config here
-  apiKey: "AIzaSyBkprQUno9OBK-flutcklvje0yuN5kKDO0",
-  authDomain: "personalwebsite1-b4455.firebaseapp.com",
-  databaseURL: "https://personalwebsite1-b4455-default-rtdb.firebaseio.com/",
-  projectId: "personalwebsite1-b4455",
-  storageBucket: "personalwebsite1-b4455.firebasestorage.app",
-  messagingSenderId: "376407918671D",
-  appId: "1:376407918671:web:29f8027dcdd5988ac6c23a"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Realtime Database and get a reference to the service
 export const database = getDatabase(app); 
