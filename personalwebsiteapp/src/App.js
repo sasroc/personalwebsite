@@ -76,6 +76,12 @@ function Home() {
                 icon="/assets/images/StockOptionsLogo.jpg"
                 iconPosition="right"
               />
+              <LinkButton
+                label="QuickFixAI"
+                url="https://quickfixai.net"
+                icon="/assets/images/logo2.png"
+                iconPosition="right"
+              />
             </div>
 
             <Footer />
