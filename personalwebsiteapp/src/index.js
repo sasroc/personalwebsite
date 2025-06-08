@@ -4,6 +4,29 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Initialize Google Analytics
+const GA_MEASUREMENT_ID = 'G-66DK2V9RYB';
+
+// Add Google Analytics script to the document
+const script = document.createElement('script');
+script.async = true;
+script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+document.head.appendChild(script);
+
+// Initialize gtag
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+  window.dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', GA_MEASUREMENT_ID);
+
+// Send a test event
+gtag('event', 'test_event', {
+  'event_category': 'testing',
+  'event_label': 'local_development'
+});
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
