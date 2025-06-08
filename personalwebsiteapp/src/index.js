@@ -19,12 +19,19 @@ function gtag() {
   window.dataLayer.push(arguments);
 }
 gtag('js', new Date());
-gtag('config', GA_MEASUREMENT_ID);
+gtag('config', GA_MEASUREMENT_ID, {
+  debug_mode: false, // Enable debug mode for local testing
+  send_page_view: true,
+  page_location: window.location.href,
+  page_path: window.location.pathname,
+  page_title: document.title
+});
 
 // Send a test event
-gtag('event', 'test_event', {
-  'event_category': 'testing',
-  'event_label': 'local_development'
+gtag('event', 'page_view', {
+  page_title: document.title,
+  page_location: window.location.href,
+  page_path: window.location.pathname
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
