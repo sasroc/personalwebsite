@@ -82,6 +82,12 @@ function Home() {
                 icon="/assets/images/logo2.png"
                 iconPosition="right"
               />
+              <LinkButton
+                label="ClaraAI"
+                url="https://claraai.net"
+                icon="/assets/images/claraailogo4.png"
+                iconPosition="right"
+              />
             </div>
 
             <Footer />
