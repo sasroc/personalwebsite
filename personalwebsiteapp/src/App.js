@@ -156,7 +156,7 @@ const ProjectsSection = () => {
     },
     {
       title: "QuickFixAI",
-      description: "AI-powered code review and debugging assistant for developers",
+      description: "AI-powered home maintenance advisor providing detailed repair guides and solutions for common household issues",
       image: "/assets/images/logo2.png",
       url: "https://quickfixai.net",
       local: false,
@@ -164,7 +164,7 @@ const ProjectsSection = () => {
     },
     {
       title: "ClaraAI",
-      description: "Intelligent AI companion for productivity and task automation",
+      description: "Always on your screen, seamless AI integration. Level up your productivity. Waitlist spots available now",
       image: "/assets/images/claraailogo4.png",
       url: "https://claraai.net",
       local: false,
