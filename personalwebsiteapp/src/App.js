@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import StockOptionsCalculator from './components/StockOptionsCalculator';
+import OptionsCalculator from './components/OptionsCalculator';
+import OptionsCalculatorPrivacy from './components/OptionsCalculatorPrivacy';
 import { Button } from './components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from './components/ui/avatar';
-import { ExternalLink, Twitter, Instagram, Mail, Clock } from 'lucide-react';
+import { ExternalLink, Twitter, Instagram, Mail, Clock, Calculator } from 'lucide-react';
 
 // Satisfying Click Sound Function
 const playSatisfyingClick = () => {
@@ -155,6 +157,14 @@ const ProjectsSection = () => {
       gradient: "from-green-500 to-emerald-600"
     },
     {
+      title: "Options P&L Calculator",
+      description: "Real-time options calculator with customizable profit/loss targets. Visual P&L scenarios at a glance — iOS app for traders",
+      image: "/assets/images/optionscalculator2.png",
+      url: "/optionscalculator",
+      local: true,
+      gradient: "from-emerald-500 to-teal-600"
+    },
+    {
       title: "QuickFixAI",
       description: "AI-powered home maintenance advisor providing detailed repair guides and solutions for common household issues",
       image: "/assets/images/logo2.png",
@@ -191,12 +201,16 @@ const ProjectsSection = () => {
               className="group bg-white/5 backdrop-blur-xl border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/10"
             >
               <CardHeader>
-                <div className="w-16 h-16 rounded-xl bg-white/10 backdrop-blur-sm p-2 mb-4 group-hover:scale-110 transition-transform duration-300 border border-white/20">
-                  <img
-                    src={project.image}
-                    alt={`${project.title} logo`}
-                    className="w-full h-full object-contain rounded-lg"
-                  />
+                <div className={`w-16 h-16 rounded-xl backdrop-blur-sm p-2 mb-4 group-hover:scale-110 transition-transform duration-300 border border-white/20 ${project.image ? 'bg-white/10' : `bg-gradient-to-br ${project.gradient}`}`}>
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={`${project.title} logo`}
+                      className="w-full h-full object-contain rounded-lg"
+                    />
+                  ) : project.icon === 'calculator' ? (
+                    <Calculator className="w-full h-full text-white p-1" />
+                  ) : null}
                 </div>
                 <CardTitle className="text-white text-xl group-hover:text-blue-300 transition-colors">
                   {project.title}
@@ -383,6 +397,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/stockoptionscalculator" element={<StockOptionsCalculator />} />
+        <Route path="/optionscalculator" element={<OptionsCalculator />} />
+        <Route path="/optionscalculator/privacy" element={<OptionsCalculatorPrivacy />} />
       </Routes>
     </Router>
   );
