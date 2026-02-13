@@ -149,6 +149,15 @@ const HeroSection = () => (
 const ProjectsSection = () => {
   const projects = [
     {
+      title: "TradeBetter",
+      description: "Comprehensive day trading journal for options traders. Track, analyze, and visualize your trading performance with detailed analytics and interactive dashboards",
+      image: "/assets/images/2.png",
+      url: "https://tradebetter.net/",
+      local: false,
+      gradient: "from-blue-500 to-indigo-600",
+      imageScale: 2.2
+    },
+    {
       title: "Stock Options Calculator",
       description: "Advanced financial tool for options trading analysis and strategy optimization",
       image: "/assets/images/StockOptionsLogo.jpg",
@@ -203,11 +212,25 @@ const ProjectsSection = () => {
               <CardHeader>
                 <div className={`w-16 h-16 rounded-xl backdrop-blur-sm p-2 mb-4 group-hover:scale-110 transition-transform duration-300 border border-white/20 ${project.image ? 'bg-white/10' : `bg-gradient-to-br ${project.gradient}`}`}>
                   {project.image ? (
-                    <img
-                      src={project.image}
-                      alt={`${project.title} logo`}
-                      className="w-full h-full object-contain rounded-lg"
-                    />
+                    project.imageScale ? (
+                      <div
+                        className="w-full h-full rounded-lg"
+                        role="img"
+                        aria-label={`${project.title} logo`}
+                        style={{
+                          backgroundImage: `url(${project.image})`,
+                          backgroundSize: `${project.imageScale * 100}%`,
+                          backgroundPosition: 'center',
+                          backgroundRepeat: 'no-repeat'
+                        }}
+                      />
+                    ) : (
+                      <img
+                        src={project.image}
+                        alt={`${project.title} logo`}
+                        className="w-full h-full object-contain rounded-lg"
+                      />
+                    )
                   ) : project.icon === 'calculator' ? (
                     <Calculator className="w-full h-full text-white p-1" />
                   ) : null}
