@@ -67,3 +67,57 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Shimmer animated heading */
+.shimmer-heading {
+  background: linear-gradient(
+    90deg,
+    #e2e8f0 0%,
+    #93c5fd 20%,
+    #ffffff 40%,
+    #e9d5ff 60%,
+    #93c5fd 80%,
+    #e2e8f0 100%
+  );
+  background-size: 300% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 300% center; }
+  100% { background-position: -300% center; }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Per-project glow on card hover */
+.project-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(99, 102, 241, 0.35),
+    0 20px 60px var(--card-glow, rgba(59, 130, 246, 0.18));
+}
+
+/* Spotify equalizer bars */
+@keyframes spotifyBar {
+  from { transform: scaleY(0.2); }
+  to   { transform: scaleY(1);   }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: rgb(2, 6, 23); }
+::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.65); }

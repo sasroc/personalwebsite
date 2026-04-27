@@ -69,11 +69,14 @@ module.exports = {
         "glow": "glow 2s ease-in-out infinite alternate",
         "float": "float 3s ease-in-out infinite",
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "aurora": "aurora 9s ease-in-out infinite alternate",
+        "shimmer": "shimmer 6s linear infinite",
       },
       animationDelay: {
         '200': '200ms',
         '400': '400ms',
         '600': '600ms',
+        '800': '800ms',
         '2000': '2s',
         '4000': '4s',
       },
@@ -122,6 +125,14 @@ module.exports = {
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-10px)" },
+        },
+        aurora: {
+          "0%": { opacity: "0.3", transform: "scale(1) translate(0, 0)" },
+          "100%": { opacity: "0.7", transform: "scale(1.2) translate(3%, 3%)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "300% center" },
+          "100%": { backgroundPosition: "-300% center" },
         },
       },
     },
