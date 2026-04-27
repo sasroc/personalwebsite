@@ -6,7 +6,7 @@ import OptionsCalculatorPrivacy from './components/OptionsCalculatorPrivacy';
 import { Button } from './components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from './components/ui/avatar';
-import { Twitter, Instagram, Mail, Clock, ChevronDown, ArrowUpRight, Zap } from 'lucide-react';
+import { Twitter, Instagram, Mail, Clock, ArrowUpRight, Zap } from 'lucide-react';
 import { database } from './firebase';
 import { ref, onValue } from 'firebase/database';
 
@@ -214,12 +214,13 @@ const HeroSection = () => {
             Get In Touch
           </Button>
         </div>
+
+        {/* Spotify */}
+        <div className="animate-slide-up animation-delay-800 max-w-sm mx-auto w-full">
+          <SpotifyNowPlaying />
+        </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
-        <ChevronDown className="w-6 h-6 text-white" />
-      </div>
     </div>
   );
 };
@@ -596,7 +597,6 @@ function Home() {
       <HeroSection />
       <ProjectsSection />
       <SocialSection />
-      <SpotifySection />
       <StockhoursSection />
       <ContactSection />
 
