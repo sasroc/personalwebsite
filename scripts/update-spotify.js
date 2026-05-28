@@ -37,7 +37,10 @@ async function getCurrentlyPlaying(token) {
     headers: { Authorization: `Bearer ${token}` },
   });
   if (res.status === 204 || res.status > 400) return null;
-  return res.json();
+  const data = await res.json();
+  // Skip podcasts/episodes — they don't have album art
+  if (data.currently_playing_type !== 'track') return null;
+  return data;
 }
 
 async function getRecentlyPlayed(token) {
@@ -65,10 +68,11 @@ async function main() {
 
   const current = await getCurrentlyPlaying(token);
 
-  if (current?.item && current.is_playing) {
-    const payload = buildTrackPayload(current.item, true);
+  // Handle both actively playing and paused tracks
+  if (current?.item) {
+    const payload = buildTrackPayload(current.item, current.is_playing === true);
     await db.ref('spotify/nowPlaying').set(payload);
-    console.log('Now playing:', payload.title, '-', payload.artist);
+    console.log(payload.isPlaying ? 'Now playing:' : 'Paused:', payload.title, '-', payload.artist);
     process.exit(0);
   }
 

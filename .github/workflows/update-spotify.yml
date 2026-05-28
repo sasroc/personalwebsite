@@ -5,6 +5,10 @@ on:
     - cron: '*/5 * * * *'   # every 5 minutes
   workflow_dispatch:          # allow manual trigger
 
+concurrency:
+  group: spotify-update
+  cancel-in-progress: true   # don't pile up if a run is already in progress
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -27,4 +31,10 @@ jobs:
           SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
           FIREBASE_DATABASE_URL: ${{ secrets.FIREBASE_DATABASE_URL }}
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-        run: node update-spotify.js
+        run: |
+          for i in 1 2 3; do
+            node update-spotify.js && exit 0
+            echo "Attempt $i failed, retrying in 5s..."
+            sleep 5
+          done
+          exit 1

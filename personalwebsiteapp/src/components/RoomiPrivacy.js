@@ -139,10 +139,10 @@ function RoomiPrivacy() {
                 <h2 className="text-xl font-semibold text-white mb-3">Contact</h2>
                 <p className="mb-2">Questions or concerns about this policy? Reach us at:</p>
                 <a
-                  href="mailto:sassanirocco@gmail.com"
+                  href="mailto:rsassanimarketing@gmail.com"
                   className="text-purple-400 hover:text-purple-300 transition-colors"
                 >
-                  sassanirocco@gmail.com
+                  rsassanimarketing@gmail.com
                 </a>
               </section>
             </div>

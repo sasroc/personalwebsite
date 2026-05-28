@@ -383,14 +383,36 @@ const SpotifyBars = () => (
 
 const SpotifyNowPlaying = () => {
   const [track, setTrack] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const trackRef = ref(database, 'spotify/nowPlaying');
-    const unsub = onValue(trackRef, (snap) => setTrack(snap.val()));
+    const unsub = onValue(
+      trackRef,
+      (snap) => { setTrack(snap.val()); setLoading(false); },
+      () => setLoading(false),
+    );
     return () => unsub();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="flex items-center gap-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-5 w-full animate-pulse">
+        <div className="w-14 h-14 rounded-xl bg-white/10 flex-shrink-0" />
+        <div className="flex-1 space-y-2">
+          <div className="h-2.5 bg-white/10 rounded w-20" />
+          <div className="h-3.5 bg-white/10 rounded w-40" />
+          <div className="h-2.5 bg-white/10 rounded w-28" />
+        </div>
+      </div>
+    );
+  }
+
   if (!track?.title) return null;
+
+  const staleMinutes = track.updatedAt ? Math.round((Date.now() - track.updatedAt) / 60000) : null;
+  const isStale = staleMinutes !== null && staleMinutes > 15;
+  const showAsPlaying = track.isPlaying && !isStale;
 
   return (
     <a
@@ -407,7 +429,7 @@ const SpotifyNowPlaying = () => {
             alt={track.album}
             className="w-14 h-14 rounded-xl shadow-lg object-cover"
           />
-          {track.isPlaying && (
+          {showAsPlaying && (
             <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/50">
               <div className="w-1.5 h-1.5 bg-white rounded-full animate-ping" />
             </div>
@@ -418,13 +440,15 @@ const SpotifyNowPlaying = () => {
       {/* Track info */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-1">
-          {track.isPlaying ? (
+          {showAsPlaying ? (
             <div className="flex items-center gap-1.5">
               <SpotifyBars />
               <span className="text-xs text-green-400 font-medium">Now Playing</span>
             </div>
           ) : (
-            <span className="text-xs text-gray-500 font-medium">Last Played</span>
+            <span className="text-xs text-gray-500 font-medium">
+              {isStale ? `Last seen · ${staleMinutes}m ago` : 'Last Played'}
+            </span>
           )}
         </div>
         <p className="text-white font-semibold text-sm truncate leading-tight">{track.title}</p>

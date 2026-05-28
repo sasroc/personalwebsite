@@ -160,10 +160,10 @@ function RoomiTerms() {
                 <h2 className="text-xl font-semibold text-white mb-3">Contact</h2>
                 <p className="mb-2">Questions about these Terms? Contact us at:</p>
                 <a
-                  href="mailto:sassanirocco@gmail.com"
+                  href="mailto:rsassanimarketing@gmail.com"
                   className="text-blue-400 hover:text-blue-300 transition-colors"
                 >
-                  sassanirocco@gmail.com
+                  rsassanimarketing@gmail.com
                 </a>
               </section>
             </div>
