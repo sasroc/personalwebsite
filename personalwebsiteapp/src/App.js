@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import StockOptionsCalculator from './components/StockOptionsCalculator';
 import OptionsCalculator from './components/OptionsCalculator';
 import OptionsCalculatorPrivacy from './components/OptionsCalculatorPrivacy';
+import RoomiPrivacy from './components/RoomiPrivacy';
+import RoomiTerms from './components/RoomiTerms';
 import { Button } from './components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from './components/ui/avatar';
@@ -624,6 +626,8 @@ function App() {
         <Route path="/stockoptionscalculator" element={<StockOptionsCalculator />} />
         <Route path="/optionscalculator" element={<OptionsCalculator />} />
         <Route path="/optionscalculator/privacy" element={<OptionsCalculatorPrivacy />} />
+        <Route path="/Roomi/privacy" element={<RoomiPrivacy />} />
+        <Route path="/Roomi/terms" element={<RoomiTerms />} />
       </Routes>
     </Router>
   );
