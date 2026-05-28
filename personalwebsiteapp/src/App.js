@@ -443,17 +443,6 @@ const SpotifyNowPlaying = () => {
   );
 };
 
-const SpotifySection = () => (
-  <section className="pb-4 px-4">
-    <div className="max-w-md mx-auto reveal">
-      <div className="flex items-center gap-2 justify-center mb-4">
-        <span className="text-xs text-gray-600 uppercase tracking-widest font-medium">Listening Activity</span>
-      </div>
-      <SpotifyNowPlaying />
-    </div>
-  </section>
-);
-
 // ── Social ────────────────────────────────────────────────────────────────────
 const SocialSection = () => {
   const links = [
