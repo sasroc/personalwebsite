@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import StockOptionsCalculator from './components/StockOptionsCalculator';
 import OptionsCalculator from './components/OptionsCalculator';
 import OptionsCalculatorPrivacy from './components/OptionsCalculatorPrivacy';
 import RoomiPrivacy from './components/RoomiPrivacy';
@@ -242,13 +241,22 @@ const ProjectsSection = () => {
       tag: 'Web App',
     },
     {
-      title: 'Stock Options Calculator',
-      description: 'Advanced financial tool for options trading analysis and strategy optimization.',
-      image: '/assets/images/StockOptionsLogo.jpg',
-      url: '/stockoptionscalculator',
-      local: true,
-      glowColor: 'rgba(16,185,129,0.22)',
-      tag: 'Desktop Tool',
+      title: 'QuickFixAI',
+      description: 'AI-powered home maintenance advisor providing detailed repair guides and solutions for common household issues.',
+      image: '/assets/images/logo2.png',
+      url: 'https://quickfixai.net',
+      local: false,
+      glowColor: 'rgba(249,115,22,0.22)',
+      tag: 'AI Tool',
+    },
+    {
+      title: 'Roomi',
+      description: 'AI-powered interior design app that transforms room photos into professionally redesigned spaces with curated styles.',
+      image: '/assets/images/roomilogo.png',
+      url: 'https://apps.apple.com/us/app/roomi-ai-interior-decorator/id6773815186',
+      local: false,
+      glowColor: 'rgba(244,114,182,0.22)',
+      tag: 'iOS App',
     },
     {
       title: 'Options P&L Calculator',
@@ -258,15 +266,6 @@ const ProjectsSection = () => {
       local: true,
       glowColor: 'rgba(20,184,166,0.22)',
       tag: 'iOS App',
-    },
-    {
-      title: 'QuickFixAI',
-      description: 'AI-powered home maintenance advisor providing detailed repair guides and solutions for common household issues.',
-      image: '/assets/images/logo2.png',
-      url: 'https://quickfixai.net',
-      local: false,
-      glowColor: 'rgba(249,115,22,0.22)',
-      tag: 'AI Tool',
     },
     {
       title: 'ClaraAI',
@@ -636,7 +635,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/stockoptionscalculator" element={<StockOptionsCalculator />} />
         <Route path="/optionscalculator" element={<OptionsCalculator />} />
         <Route path="/optionscalculator/privacy" element={<OptionsCalculatorPrivacy />} />
         <Route path="/Roomi/privacy" element={<RoomiPrivacy />} />
