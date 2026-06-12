@@ -7,7 +7,7 @@ import RoomiTerms from './components/RoomiTerms';
 import { Button } from './components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from './components/ui/avatar';
-import { Twitter, Instagram, Mail, Clock, ArrowUpRight, Zap } from 'lucide-react';
+import { Twitter, Instagram, Github, Mail, Clock, ArrowUpRight, Zap } from 'lucide-react';
 import { database } from './firebase';
 import { ref, onValue } from 'firebase/database';
 
@@ -485,6 +485,14 @@ const SocialSection = () => {
       hover: 'hover:bg-pink-500/10 hover:border-pink-400/40 hover:shadow-pink-500/20',
       iconColor: 'text-pink-400',
     },
+    {
+      name: 'GitHub',
+      url: 'https://github.com/sasroc',
+      icon: <Github className="w-7 h-7" />,
+      desc: 'Code, apps & experiments',
+      hover: 'hover:bg-slate-300/10 hover:border-slate-200/40 hover:shadow-slate-200/15',
+      iconColor: 'text-slate-200',
+    },
   ];
 
   return (
@@ -499,7 +507,7 @@ const SocialSection = () => {
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-4 max-w-lg mx-auto">
+        <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
           {links.map((link, i) => (
             <button
               key={i}
