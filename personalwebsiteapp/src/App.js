@@ -4,6 +4,8 @@ import OptionsCalculator from './components/OptionsCalculator';
 import OptionsCalculatorPrivacy from './components/OptionsCalculatorPrivacy';
 import RoomiPrivacy from './components/RoomiPrivacy';
 import RoomiTerms from './components/RoomiTerms';
+import CurbPrivacy from './components/CurbPrivacy';
+import CurbTerms from './components/CurbTerms';
 import { Button } from './components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from './components/ui/avatar';
@@ -647,6 +649,8 @@ function App() {
         <Route path="/optionscalculator/privacy" element={<OptionsCalculatorPrivacy />} />
         <Route path="/Roomi/privacy" element={<RoomiPrivacy />} />
         <Route path="/Roomi/terms" element={<RoomiTerms />} />
+        <Route path="/curb/privacy" element={<CurbPrivacy />} />
+        <Route path="/curb/terms" element={<CurbTerms />} />
       </Routes>
     </Router>
   );
