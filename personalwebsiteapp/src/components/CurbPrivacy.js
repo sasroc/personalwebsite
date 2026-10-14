@@ -47,7 +47,7 @@ function CurbPrivacy() {
                   <li className="flex gap-3">
                     <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0" />
                     <div>
-                      <span className="text-white font-medium">Account Information.</span> CURB uses Sign in with Apple. We receive an account identifier and the email address Apple shares with us. If you choose "Hide My Email", that is a private relay address. We use these to create and identify your account.
+                      <span className="text-white font-medium">Account Information.</span> You can sign in with Apple, with Google, or with an email address and password. We receive an account identifier and your email address. With Sign in with Apple's "Hide My Email", that is a private relay address. With Google, we receive your basic profile information (name and email). Passwords are handled by Google Firebase Authentication and are never visible to us. We use this information to create and identify your account.
                     </div>
                   </li>
                   <li className="flex gap-3">
@@ -135,6 +135,7 @@ function CurbPrivacy() {
                 <ul className="space-y-2">
                   {[
                     ['Sign in with Apple', 'Sign-in'],
+                    ['Google Sign-In', 'Sign-in'],
                     ['Google Firebase Authentication', 'Account management'],
                     ['OpenAI API', 'AI image generation and materials estimates'],
                     ['RevenueCat', 'Subscription and purchase status'],
@@ -152,7 +153,7 @@ function CurbPrivacy() {
               <section>
                 <h2 className="text-xl font-semibold text-white mb-3">Data Retention & Deletion</h2>
                 <p className="mb-3">
-                  We keep your account information and project history for as long as your account is active. You can delete your account at any time in the App under Account → Delete account. This permanently removes your account, projects, design choices, render history, and materials estimates from our database. It also deletes your sign-in account and revokes CURB's access to your Apple ID.
+                  We keep your account information and project history for as long as your account is active. You can delete your account at any time in the App under Account → Delete account. This permanently removes your account, projects, design choices, render history, and materials estimates from our database. It also deletes your sign-in account and, if you signed in with Apple or Google, revokes CURB's access to that account.
                 </p>
                 <p>
                   Deleting your account does not cancel an active App Store subscription. Cancel it in your iPhone's Settings → Apple ID → Subscriptions. Photos and renders saved on your device are deleted when you uninstall the App.

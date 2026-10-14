@@ -50,7 +50,7 @@ function CurbTerms() {
               <section>
                 <h2 className="text-xl font-semibold text-white mb-3">Description of Service</h2>
                 <p>
-                  CURB is an iOS app that uses artificial intelligence to generate redesigned visualizations of the outside of your house from a photo you provide, along with an estimated materials list and cost range. You must sign in with Apple to use the App.
+                  CURB is an iOS app that uses artificial intelligence to generate redesigned visualizations of the outside of your house from a photo you provide, along with an estimated materials list and cost range. You must create an account to use the App, using Sign in with Apple, Google, or an email address and password. You are responsible for keeping your account credentials secure.
                 </p>
               </section>
 
